@@ -12,6 +12,8 @@ const DEFAULT_NAVIGATION = {
   navItems: [
     { label: 'Home', href: '#hero' },
     { label: 'Features', href: '#features' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Contact', href: '#contact' },
   ],
   ctaText: 'Order Now',
   ctaHref: '/order',
@@ -49,7 +51,7 @@ export default function Navigation(props: NavigationProps) {
 
   return (
     <section id="navigation">
-      <nav className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-background/95">
+      <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Brand */}
@@ -67,11 +69,12 @@ export default function Navigation(props: NavigationProps) {
                   <li key={idx}>
                     <button
                       onClick={() => handleNavClick(item.href)}
-                      className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
+                      className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium relative group"
                       data-editable-href={`navItems[${idx}].href`}
                       data-href={item.href}
                     >
                       <span data-editable={`navItems[${idx}].label`}>{item.label}</span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
                     </button>
                   </li>
                 ))}
@@ -79,7 +82,7 @@ export default function Navigation(props: NavigationProps) {
 
               <Button
                 onClick={handleCtaClick}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg"
                 data-editable-href="ctaHref"
                 data-href={config.ctaHref}
               >
@@ -129,12 +132,12 @@ export default function Navigation(props: NavigationProps) {
 
                     {/* Mobile Navigation */}
                     <div className="flex-1 py-6">
-                      <ul className="space-y-4">
+                      <ul className="space-y-2">
                         {config.navItems.map((item, idx) => (
                           <li key={idx}>
                             <button
                               onClick={() => handleNavClick(item.href)}
-                              className="w-full text-left py-3 px-4 text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors duration-200"
+                              className="w-full text-left py-3 px-4 text-lg font-medium text-muted-foreground hover:text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-all duration-200"
                               data-editable-href={`navItems[${idx}].href`}
                               data-href={item.href}
                             >
@@ -149,7 +152,7 @@ export default function Navigation(props: NavigationProps) {
                     <div className="pt-6 border-t border-border">
                       <Button
                         onClick={handleCtaClick}
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-md"
                         data-editable-href="ctaHref"
                         data-href={config.ctaHref}
                       >
